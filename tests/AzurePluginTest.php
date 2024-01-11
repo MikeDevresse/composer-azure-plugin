@@ -4,8 +4,8 @@ use Composer\Composer;
 use Composer\Factory;
 use Composer\IO\IOInterface;
 use Composer\Script\ScriptEvents;
-use MarvinCaspar\Composer\AzurePlugin;
-use MarvinCaspar\Composer\CommandExecutor;
+use MikeDevresse\Composer\AzurePlugin;
+use MikeDevresse\Composer\CommandExecutor;
 use PHPUnit\Framework\TestCase;
 
 final class AzurePluginTest extends TestCase
@@ -38,7 +38,7 @@ final class AzurePluginTest extends TestCase
     public function testGetCapabilities(): void
     {
         $this->assertEquals(
-            ['Composer\Plugin\Capability\CommandProvider' => 'MarvinCaspar\Composer\CommandProvider'],
+            ['Composer\Plugin\Capability\CommandProvider' => 'MikeDevresse\Composer\CommandProvider'],
             $this->azurePlugin->getCapabilities()
         );
     }

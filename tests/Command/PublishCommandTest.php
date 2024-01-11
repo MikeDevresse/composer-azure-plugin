@@ -5,7 +5,7 @@ namespace Command;
 use Composer\Composer;
 use Composer\Factory;
 use Composer\IO\IOInterface;
-use MarvinCaspar\Composer\Command\PublishCommand;
+use MikeDevresse\Composer\Command\PublishCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

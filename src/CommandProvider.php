@@ -1,9 +1,9 @@
 <?php
 
-namespace MarvinCaspar\Composer;
+namespace MikeDevresse\Composer;
 
 use Composer\Plugin\Capability\CommandProvider as CommandProviderCapability;
-use MarvinCaspar\Composer\Command\PublishCommand;
+use MikeDevresse\Composer\Command\PublishCommand;
 
 class CommandProvider implements CommandProviderCapability
 {

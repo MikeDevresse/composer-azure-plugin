@@ -1,5 +1,3 @@
-![Build status](https://github.com/marvincaspar/composer-azure-plugin/workflows/CI/badge.svg)
-[![codecov](https://codecov.io/gh/marvincaspar/composer-azure-plugin/branch/master/graph/badge.svg?token=DG3G63T0Q2)](https://codecov.io/gh/marvincaspar/composer-azure-plugin)
 
 # Composer Azure Plugin
 
@@ -10,7 +8,7 @@ Composer Azure plugin is an attempt to use Composer with Azure DevOps artifacts,
 Composer Azure Plugin requires [Composer 2](https://getcomposer.org/) and PHP8.1 or newer. It should be installed globally.
 
 ```
-$ composer global require marvincaspar/composer-azure-plugin
+$ composer global require mikedevresse/composer-azure-plugin
 ```
 
 You have to be logged in via

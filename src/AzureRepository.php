@@ -1,6 +1,6 @@
 <?php
 
-namespace MarvinCaspar\Composer;
+namespace MikeDevresse\Composer;
 
 class AzureRepository
 {
@@ -11,13 +11,13 @@ class AzureRepository
     protected bool $symlink;
     protected array $artifacts = [];
 
-    public function __construct(string $organization, string $project, string $feed, bool $symlink)
+    public function __construct(string $organization, string $project, string $feed, bool $symlink, string $scope)
     {
         $this->organization = $organization;
         $this->project = $project;
         $this->feed = $feed;
         $this->symlink = $symlink;
-        $this->scope = "project";
+        $this->scope = $scope;
     }
 
     public function getOrganization(): string

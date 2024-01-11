@@ -1,9 +1,9 @@
 <?php
 
-namespace MarvinCaspar\Composer\Command;
+namespace MikeDevresse\Composer\Command;
 
 use Composer\Command\BaseCommand;
-use MarvinCaspar\Composer\FileHelper;
+use MikeDevresse\Composer\FileHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

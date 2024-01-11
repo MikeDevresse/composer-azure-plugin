@@ -1,6 +1,6 @@
 <?php
 
-namespace MarvinCaspar\Composer;
+namespace MikeDevresse\Composer;
 
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
@@ -60,7 +60,7 @@ class AzurePlugin implements PluginInterface, EventSubscriberInterface, Capable
     public function getCapabilities(): array
     {
         return [
-            'Composer\Plugin\Capability\CommandProvider' => 'MarvinCaspar\Composer\CommandProvider',
+            'Composer\Plugin\Capability\CommandProvider' => 'MikeDevresse\Composer\CommandProvider',
         ];
     }
 
@@ -128,10 +128,19 @@ class AzurePlugin implements PluginInterface, EventSubscriberInterface, Capable
             return [];
         }
 
-        foreach ($extra['azure-repositories'] as ['organization' => $organization, 'project' => $project, 'feed' => $feed, 'symlink' => $symlink, 'packages' => $packages]) {
-            $azureRepository = new AzureRepository($organization, $project, $feed, $symlink);
+        foreach ($extra['azure-repositories'] as $repository) {
+            if (!isset($repository['organization'], $repository['feed'], $repository['packages'])) {
+                throw new \Exception("Arguments organization, packages and feed required");
+            }
+            $azureRepository = new AzureRepository(
+                $repository['organization'],
+                $repository['project'] ?? '',
+                $repository['feed'],
+                $repository['symlink'] ?? false,
+                $repository['scope'] ?? 'organization'
+            );
 
-            foreach ($packages as $packageName) {
+            foreach ($repository['packages'] as $packageName) {
                 if (array_key_exists($packageName, $requires)) {
                     $azureRepository->addArtifact($packageName, $requires[$packageName]->getPrettyConstraint());
                 }
@@ -214,7 +223,9 @@ class AzurePlugin implements PluginInterface, EventSubscriberInterface, Capable
         } else {
             $command = 'az artifacts universal download';
             $command .= ' --organization ' . 'https://' . $azureRepository->getOrganization();
-            $command .= ' --project "' . $azureRepository->getProject() . '"';
+            if ($azureRepository->getScope() === "project") {
+                $command .= ' --project "' . $azureRepository->getProject() . '"';
+            }
             $command .= ' --scope ' . $azureRepository->getScope();
             $command .= ' --feed ' . $azureRepository->getFeed();
             $command .= ' --name ' . str_replace('/', '.', $artifact->getName());

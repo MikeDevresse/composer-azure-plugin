@@ -1,6 +1,6 @@
 <?php
 
-namespace MarvinCaspar\Composer;
+namespace MikeDevresse\Composer;
 
 use Exception;
 

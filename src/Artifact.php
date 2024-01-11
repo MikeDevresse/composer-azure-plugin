@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace MarvinCaspar\Composer;
+namespace MikeDevresse\Composer;
 
 
 class Artifact
