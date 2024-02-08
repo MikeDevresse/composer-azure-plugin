@@ -343,6 +343,12 @@ class AzurePlugin implements PluginInterface, EventSubscriberInterface, Capable
         $packagesDev = [];
         foreach ($lockData['packages-dev'] as $package) {
             $packageToLock = $loader->load($package);
+
+            // Use complete package if the given package is an alias package
+            if ($packageToLock instanceof CompleteAliasPackage) {
+                $packageToLock = $packageToLock->getAliasOf();
+            }
+
             $packagesDev[] = $packageToLock;
         }
 
@@ -356,7 +362,7 @@ class AzurePlugin implements PluginInterface, EventSubscriberInterface, Capable
             $lockData['stability-flags'],
             $lockData['prefer-stable'],
             $lockData['prefer-lowest'],
-            []
+            $lockData['platform-overrides']
         );
     }
 }
