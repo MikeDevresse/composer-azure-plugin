@@ -1,7 +1,7 @@
 {
     "name": "mikedevresse/composer-azure-plugin",
     "description": "Azure Composer plugin",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "type": "composer-plugin",
     "license": "MIT",
     "autoload": {
